@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:Reference Uri="http://orogeldev:44333/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='FIORI_MENU')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://orogeldev:44333/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CAPABILITIES',Version='0001',SAP__Origin='FIORI_MENU')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://orogeldev:44333/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMUNICATION',Version='0001',SAP__Origin='FIORI_MENU')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Communication.v1" Alias="Communication"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://orogeldev:44333/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_AGGREGATION',Version='0001',SAP__Origin='FIORI_MENU')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Aggregation.V1" Alias="Aggregation"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://orogeldev:44333/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_PERSONALDATA',Version='0001',SAP__Origin='FIORI_MENU')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.PersonalData.v1" Alias="PersonalData"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://orogeldev:44333/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_VALIDATION',Version='0001',SAP__Origin='FIORI_MENU')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Validation.V1" Alias="Validation"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://orogeldev:44333/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_ANALYTICS',Version='0001',SAP__Origin='FIORI_MENU')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Analytics.v1" Alias="Analytics"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://orogeldev:44333/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_MEASURES',Version='0001',SAP__Origin='FIORI_MENU')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Measures.V1" Alias="Measures"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://orogeldev:44333/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_UI',Version='0001',SAP__Origin='FIORI_MENU')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.UI.v1" Alias="UI"/>
+    </edmx:Reference>
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="ZZ1_ORA1_CDS" xml:lang="en" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <EntityType Name="I_LanguageType" sap:label="Language" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Language"/>
+                </Key>
+                <Property Name="Language" Type="Edm.String" Nullable="false" MaxLength="2" sap:text="Language_Text" sap:label="Language Key"/>
+                <Property Name="Language_Text" Type="Edm.String" MaxLength="16" sap:label="Name" sap:quickinfo="Name of Language" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="LanguageISOCode" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Language Code" sap:quickinfo="2-Character SAP Language Code"/>
+            </EntityType>
+            <EntityType Name="ZZ1_ORA1Type" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="SAP_UUID"/>
+                </Key>
+                <Property Name="SAP_UUID" Type="Edm.Guid" Nullable="false" sap:label="UUID" sap:quickinfo="16 Byte UUID in 16 Bytes (Raw Format)"/>
+                <Property Name="BolleBSDistributore" Type="Edm.String" MaxLength="6" sap:label="Text of length 6" sap:heading="" sap:quickinfo=""/>
+                <Property Name="RiferiemntoDistributore" Type="Edm.String" MaxLength="20" sap:label="Text of length 20" sap:heading="" sap:quickinfo=""/>
+                <Property Name="CodiceDestMerciSAP" Type="Edm.String" MaxLength="10" sap:label="Text of length 10" sap:heading="" sap:quickinfo=""/>
+                <Property Name="CodiceClienteSAP1" Type="Edm.String" MaxLength="10" sap:label="Text of length 10" sap:heading="" sap:quickinfo=""/>
+                <Property Name="CausaleBolla1" Type="Edm.String" MaxLength="2" sap:text="to_CausaleBolla1/Language_Text" sap:label="CausaleBolla1" sap:heading="" sap:quickinfo="" sap:value-list="standard"/>
+                <NavigationProperty Name="to_CausaleBolla1" Relationship="ZZ1_ORA1_CDS.assoc_39EE68644D25F97C5C0446435DD1EA2C" FromRole="FromRole_assoc_39EE68644D25F97C5C0446435DD1EA2C" ToRole="ToRole_assoc_39EE68644D25F97C5C0446435DD1EA2C"/>
+            </EntityType>
+            <Association Name="assoc_39EE68644D25F97C5C0446435DD1EA2C" sap:content-version="1">
+                <End Type="ZZ1_ORA1_CDS.ZZ1_ORA1Type" Multiplicity="1" Role="FromRole_assoc_39EE68644D25F97C5C0446435DD1EA2C"/>
+                <End Type="ZZ1_ORA1_CDS.I_LanguageType" Multiplicity="0..1" Role="ToRole_assoc_39EE68644D25F97C5C0446435DD1EA2C"/>
+                <ReferentialConstraint>
+                    <Principal Role="ToRole_assoc_39EE68644D25F97C5C0446435DD1EA2C">
+                        <PropertyRef Name="Language"/>
+                    </Principal>
+                    <Dependent Role="FromRole_assoc_39EE68644D25F97C5C0446435DD1EA2C">
+                        <PropertyRef Name="CausaleBolla1"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <EntityContainer Name="ZZ1_ORA1_CDS_Entities" m:IsDefaultEntityContainer="true" sap:message-scope-supported="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="I_Language" EntityType="ZZ1_ORA1_CDS.I_LanguageType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="ZZ1_ORA1" EntityType="ZZ1_ORA1_CDS.ZZ1_ORA1Type" sap:searchable="true" sap:content-version="1"/>
+                <AssociationSet Name="assoc_39EE68644D25F97C5C0446435DD1EA2C" Association="ZZ1_ORA1_CDS.assoc_39EE68644D25F97C5C0446435DD1EA2C" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZZ1_ORA1" Role="FromRole_assoc_39EE68644D25F97C5C0446435DD1EA2C"/>
+                    <End EntitySet="I_Language" Role="ToRole_assoc_39EE68644D25F97C5C0446435DD1EA2C"/>
+                </AssociationSet>
+                <FunctionImport Name="ZZ1_ORA1Sap_upsert" ReturnType="ZZ1_ORA1_CDS.ZZ1_ORA1Type" EntitySet="ZZ1_ORA1" m:HttpMethod="POST">
+                    <Parameter Name="BolleBSDistributore" Type="Edm.String" Mode="In" MaxLength="6"/>
+                    <Parameter Name="RiferiemntoDistributore" Type="Edm.String" Mode="In" MaxLength="20"/>
+                    <Parameter Name="CodiceDestMerciSAP" Type="Edm.String" Mode="In" MaxLength="10"/>
+                    <Parameter Name="CodiceClienteSAP1" Type="Edm.String" Mode="In" MaxLength="10"/>
+                    <Parameter Name="CausaleBolla1" Type="Edm.String" Mode="In" MaxLength="2"/>
+                </FunctionImport>
+            </EntityContainer>
+            <Annotations Target="ZZ1_ORA1_CDS.ZZ1_ORA1Type/CausaleBolla1" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Language"/>
+                        <PropertyValue Property="CollectionPath" String="I_Language"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="CausaleBolla1"/>
+                                    <PropertyValue Property="ValueListProperty" String="Language"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Language_Text"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZZ1_ORA1_CDS.ZZ1_ORA1_CDS_Entities" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ApplyMultiUnitBehaviorForSortingAndFiltering" Bool="true"/>
+                <Annotation Term="Aggregation.ApplySupported">
+                    <Record>
+                        <PropertyValue Property="Transformations">
+                            <Collection>
+                                <String>aggregate</String>
+                                <String>groupby</String>
+                                <String>filter</String>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="Rollup" EnumMember="None"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZZ1_ORA1_CDS.ZZ1_ORA1Type/BolleBSDistributore" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/>
+            </Annotations>
+            <Annotations Target="ZZ1_ORA1_CDS.ZZ1_ORA1Type" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.SemanticKey">
+                    <Collection>
+                        <PropertyPath>BolleBSDistributore</PropertyPath>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+            <atom:link rel="self" href="http://orogeldev:44333/sap/opu/odata/sap/ZZ1_ORA1_CDS/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+            <atom:link rel="latest-version" href="http://orogeldev:44333/sap/opu/odata/sap/ZZ1_ORA1_CDS/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>
