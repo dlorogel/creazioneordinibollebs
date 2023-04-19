@@ -5,7 +5,7 @@
         "type": "application",
         "i18n": "i18n/i18n.properties",
         "applicationVersion": {
-            "version": "0.0.1"
+            "version": "0.0.2"
         },
         "title": "{{appTitle}}",
         "description": "{{appDescription}}",
@@ -36,6 +36,60 @@
             },
             "ora3Service": {
                 "uri": "/sap/opu/odata/sap/ZZ1_ORA3_CDS/",
+                "type": "OData",
+                "settings": {
+                    "annotations": [],
+                    "localUri": "localService/metadata.xml",
+                    "odataVersion": "2.0"
+                }
+            },
+            "CreazioneOrdiniBolleBSService": {
+                "uri": "/sap/opu/odata/sap/ZCREAZIONEORDINIBOLLEBS_SRV/",
+                "type": "OData",
+                "settings": {
+                    "annotations": [],
+                    "localUri": "localService/metadata.xml",
+                    "odataVersion": "2.0"
+                }
+            },
+            "SalesOrderService": {
+                "uri": "/sap/opu/odata/sap/API_SALES_ORDER_SRV",
+                "type": "OData",
+                "settings": {
+                    "annotations": [],
+                    "localUri": "localService/metadata.xml",
+                    "odataVersion": "2.0"
+                }
+            },
+            "OutboundDeliveryService": {
+                "uri": "/sap/opu/odata/sap/API_OUTBOUND_DELIVERY_SRV;v=0002",
+                "type": "OData",
+                "settings": {
+                    "annotations": [],
+                    "localUri": "localService/metadata.xml",
+                    "odataVersion": "2.0"
+                }
+            },
+            "CustomerReturnService": {
+                "uri": "/sap/opu/odata/sap/API_CUSTOMER_RETURN_SRV",
+                "type": "OData",
+                "settings": {
+                    "annotations": [],
+                    "localUri": "localService/metadata.xml",
+                    "odataVersion": "2.0"
+                }
+            },
+            "CustomerReturnDeliveryService": {
+                "uri": "/sap/opu/odata/sap/API_CUSTOMER_RETURNS_DELIVERY_SRV;v=0002",
+                "type": "OData",
+                "settings": {
+                    "annotations": [],
+                    "localUri": "localService/metadata.xml",
+                    "odataVersion": "2.0"
+                }
+            },
+            "ProductService": {
+                "uri": "/sap/opu/odata/sap/API_PRODUCT_SRV",
                 "type": "OData",
                 "settings": {
                     "annotations": [],
@@ -77,6 +131,9 @@
         }
     },
     "sap.ui5": {
+        "config": {
+            "fullWidth": true
+        },
         "flexEnabled": false,
         "dependencies": {
             "minUI5Version": "1.84.7",
@@ -116,6 +173,63 @@
                 "dataSource": "ora3Service",
                 "preload": true,
                 "settings": {}
+            },
+            "appModel": {
+                "type": "sap.ui.model.json.JSONModel",
+                "settings": {},
+                "preload": false
+            },
+            "CreazioneOrdiniBolleBSModel": {
+                "dataSource": "CreazioneOrdiniBolleBSService",
+                "preload": true,
+                "settings": {}
+            },
+            "SalesOrderModel": {
+                "type": "sap.ui.model.odata.ODataModel",
+                "settings": {
+                    "defaultOperationMode": "Server",
+                    "defaultBindingMode": "OneWay",
+                    "defaultCountMode": "Request"
+                },
+                "dataSource": "SalesOrderService",
+                "preload": true
+            },
+            "OutboundDeliveryModel": {
+                "dataSource": "OutboundDeliveryService",
+                "preload": true,
+                "type": "sap.ui.model.odata.ODataModel",
+                "settings": {
+                    "defaultOperationMode": "Server",
+                    "defaultCountMode": "Request"
+                }
+            },
+            "CustomerReturnModel": {
+                "type": "sap.ui.model.odata.ODataModel",
+                "settings": {
+                    "defaultOperationMode": "Server",
+                    "defaultBindingMode": "OneWay",
+                    "defaultCountMode": "Request"
+                },
+                "dataSource": "CustomerReturnService",
+                "preload": true
+            },
+            "CustomerReturnDeliveryModel": {
+                "dataSource": "CustomerReturnDeliveryService",
+                "preload": true,
+                "type": "sap.ui.model.odata.ODataModel",
+                "settings": {
+                    "defaultOperationMode": "Server",
+                    "defaultCountMode": "Request"
+                }
+            },
+            "ProductModel": {
+                "dataSource": "ProductService",
+                "preload": true,
+                "type": "sap.ui.model.odata.ODataModel",
+                "settings": {
+                    "defaultOperationMode": "Server",
+                    "defaultCountMode": "Request"
+                }
             }
         },
         "resources": {

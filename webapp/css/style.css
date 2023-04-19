@@ -1,1 +1,9 @@
-/* Enter your custom styles here */
+.parent span[data-colorclass="Error"] {
+    background-color:#F00000 !important;
+}
+.red{
+    background-color:#F00000 !important;
+}
+.green{
+    background-color:#00F000 !important;
+}

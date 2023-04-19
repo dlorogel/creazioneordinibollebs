@@ -1,193 +1,176 @@
-<mvc:View controllerName="it.orogel.crezioneordinibollebs.controller.View1"
-    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+<mvc:View xmlns:mvc="sap.ui.core.mvc"
     xmlns="sap.m"
     xmlns:t="sap.ui.table"
     xmlns:core="sap.ui.core"
+    xmlns:coreelements="sap.ui.core.Element"
     xmlns:u="sap.ui.unified"
     xmlns:f="sap.ui.layout.form"
-    xmlns:l="sap.ui.layout">
-    <Shell id="shell">
+    xmlns:l="sap.ui.layout" controllerName="it.orogel.crezioneordinibollebs.controller.View1" displayBlock="true">
+    <Shell id="shell" appWidthLimited="false">
         <App id="app">
             <pages>
                 <Page id="page" title="{i18n>title}">
-                    <f:SimpleForm id="simpleForm" editable="true" layout="ResponsiveGridLayout" labelSpanXL="4" labelSpanL="4" labelSpanM="4" labelSpanS="3" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="1" columnsL="1" columnsM="1" singleContainerFullSize="false">
-                        <f:content>
-                            <Label text="Carica File" labelFor="fileUploader"/>
-                            <u:FileUploader id="fileUploader" name="myFileUpload" uploadUrl="upload/" fileType="txt" tooltip="Carica File da Locale" uploadComplete="handleUploadComplete" typeMissmatch=".onFailedType"/>
-                            <Button text="{i18n>lbl.UploadFile}" type="Emphasized" icon="sap-icon://upload" press=".onUploadPress" width="200px"/>
-                        </f:content>
-                    </f:SimpleForm>
-                    <VBox fitContainer="false" backgroundDesign="Transparent">
-                        <t:Table id="Ordini" rows="{appModel>/rows}" selectionMode="None" visibleRowCountMode="Auto" ariaLabelledBy="title" enableCellFilter="true">
-                            <t:rowSettingsTemplate>
-                                <t:RowSettings highlight="{StatoOrdine}"/>
-                            </t:rowSettingsTemplate>
-                            <t:columns>
-                                <t:Column hAlign="Begin" resizable="true" autoResizable="true" filterProperty="Flusso" sortProperty="Flusso">
-                                    <Label text="{i18n>lbl.Flusso}"/>
-                                    <t:template>
-                                        <Text text="{Flusso}" />
-                                    </t:template>
-                                </t:Column>
-                                <t:Column hAlign="Begin" resizable="true" autoResizable="true" filterProperty="NumeroBolla" sortProperty="NumeroBolla">
-                                    <Label text="{i18n>lbl.NumeroBolla}"/>
-                                    <t:template>
-                                        <Text text="{NumeroBolla}"/>
-                                    </t:template>
-                                </t:Column>
-                                <t:Column hAlign="Begin" resizable="true" autoResizable="true" filterProperty="DataBolla" sortProperty="DataBolla">
-                                    <Label text="{i18n>lbl.DataBolla}"/>
-                                    <t:template>
-                                        <Text  text ="{ path:'DataBolla', type:'sap.ui.model.type.Date', formatOptions: { pattern : 'dd-MM-yyyy' } }" />
-                                    </t:template>
-                                </t:Column>
-                                <t:Column hAlign="Begin" resizable="true" autoResizable="true" filterProperty="Distributore" sortProperty="Distributore">
-                                    <Label text="{i18n>lbl.Distributore}"/>
-                                    <t:template>
-                                        <Input value="{Distributore}" editable="true"/>
-                                    </t:template>
-                                </t:Column>
-                                <t:Column hAlign="Begin" resizable="true" autoResizable="true" filterProperty="DescrizioneDistributore" sortProperty="DescrizioneDistributore">
-                                    <Label text="{i18n>lbl.DescrizioneDistributore}"/>
-                                    <t:template>
-                                        <Text text="{DescrizioneDistributore}"/>
-                                    </t:template>
-                                </t:Column>
-                                <t:Column hAlign="Begin" resizable="true" autoResizable="true" filterProperty="Committente" sortProperty="Committente">
-                                    <Label text="{i18n>lbl.Committente}"/>
-                                    <t:template>
-                                        <Text text="{Committente}" />
-                                    </t:template>
-                                </t:Column>
-                                <t:Column hAlign="Begin" resizable="true" autoResizable="true" filterProperty="DescrizioneCommittente" sortProperty="DescrizioneCommittente">
-                                    <Label text="{i18n>lbl.DescrizioneCommittente}"/>
-                                    <t:template>
-                                        <Text text="{DescrizioneCommittente}" />
-                                    </t:template>
-                                </t:Column>
-                                <t:Column hAlign="Begin" resizable="true" autoResizable="true" filterProperty="DestinatarioMerci" sortProperty="DestinatarioMerci">
-                                    <Label text="{i18n>lbl.DestinatarioMerci}"/>
-                                    <t:template>
-                                        <Text text="{DestinatarioMerci}"/>
-                                    </t:template>
-                                </t:Column>
-                                <t:Column hAlign="Begin" resizable="true" autoResizable="true" filterProperty="DescrizioneDestinatarioMerci" sortProperty="DescrizioneDestinatarioMerci">
-                                    <Label text="{i18n>lbl.DescrizioneDestinatarioMerci}"/>
-                                    <t:template>
-                                        <Text text="{DescrizioneDestinatarioMerci}" />
-                                    </t:template>
-                                </t:Column>
-                                <t:Column hAlign="Begin" resizable="true" autoResizable="true" filterProperty="DataOrdineCliente" sortProperty="DataOrdineCliente">
-                                    <Label text="{i18n>lbl.DataOrdineCliente}"/>
-                                    <t:template>
-                                        <Text  text ="{ path:'DataOrdineCliente', type:'sap.ui.model.type.Date', formatOptions: { pattern : 'dd-MM-yyyy' } }" />
-                                    </t:template>
-                                </t:Column>
-                                <t:Column hAlign="Begin" resizable="true" autoResizable="true" filterProperty="DataConsegnaMerce" sortProperty="DataConsegnaMerce">
-                                    <Label text="{i18n>lbl.DataConsegnaMerce}"/>
-                                    <t:template>
-                                        <Text  text ="{ path:'DataConsegnaMerce', type:'sap.ui.model.type.Date', formatOptions: { pattern : 'dd-MM-yyyy' } }" />
-                                    </t:template>
-                                </t:Column>
-                                <t:Column hAlign="Begin" resizable="true" autoResizable="true" filterProperty="PosizioneOrdine" sortProperty="PosizioneOrdine">
-                                    <Label text="{i18n>lbl.PosizioneOrdine}"/>
-                                    <t:template>
-                                        <Text text="{PosizioneOrdine}" />
-                                    </t:template>
-                                </t:Column>
-                                <t:Column hAlign="Begin" resizable="true" autoResizable="true" filterProperty="Materiale" sortProperty="Materiale">
-                                    <Label text="{i18n>lbl.Materiale}"/>
-                                    <t:template>
-                                        <Input value="{Materiale}" editable="true"/>
-                                    </t:template>
-                                </t:Column>
-                                <t:Column hAlign="Begin" resizable="true" autoResizable="true" filterProperty="DescrizioneMateriale" sortProperty="DescrizioneMateriale">
-                                    <Label text="{i18n>lbl.DescrizioneMateriale}"/>
-                                    <t:template>
-                                        <Text text="{DescrizioneMateriale}" />
-                                    </t:template>
-                                </t:Column>
-                                <t:Column hAlign="Begin" resizable="true" autoResizable="true" filterProperty="Quantita" sortProperty="Quantita">
-                                    <Label text="{i18n>lbl.Quantita}"/>
-                                    <t:template>
-                                        <Input value="{Quantita}" editable="true"/>
-                                    </t:template>
-                                </t:Column>
-                                <t:Column hAlign="Begin" resizable="true" autoResizable="true" filterProperty="UDM" sortProperty="UDM">
-                                    <Label text="{i18n>lbl.UDM}"/>
-                                    <t:template>
-                                        <Input value="{UDM}" editable="true"/>
-                                    </t:template>
-                                </t:Column>
-                                <t:Column hAlign="Begin" resizable="true" autoResizable="true" filterProperty="Note" sortProperty="Note">
-                                    <Label text="{i18n>lbl.Note}"/>
-                                    <t:template>
-                                        <Text text="{Note}" />
-                                    </t:template>
-                                </t:Column>
-                                <t:Column hAlign="Begin" resizable="true" autoResizable="true" filterProperty="StatoElaborazione" sortProperty="StatoElaborazione">
-                                    <Label text="{i18n>lbl.StatoElaborazione}"/>
-                                    <t:template>
-                                        <Text text="{StatoElaborazione}" />
-                                    </t:template>
-                                </t:Column>
-                            </t:columns>
-                        </t:Table>
-                        <FlexBox fitContainer="true" alignItems="Center" justifyContent="Center">
-                            <Label text="{i18n>lbl.ContoDeposito}"/>
-                        </FlexBox>
-                        <FlexBox alignItems="Center" justifyContent="Center">
-                            <OverflowToolbar>
-                                <Button id="CreaOrdine" text="Crea Ordine" press="onCreaOrdine">
-                                    <layoutData>
-                                        <OverflowToolbarLayoutData shrinkable="true"
-                                                    minWidth = "50px"/>
-                                    </layoutData>
-                                </Button>
-                                <ToolbarSpacer width="135px"/>
-                                <Button id="ConsegnaUscitaMerci" text="Consegna e Uscita Merci" press="onConsegnaUscitaMerci">
-                                    <layoutData>
-                                        <OverflowToolbarLayoutData shrinkable="true"
-                                                    minWidth = "50px"/>
-                                    </layoutData>
-                                </Button>
-                            </OverflowToolbar>
-                        </FlexBox>
-                        <FlexBox fitContainer="true" alignItems="Center" justifyContent="Center">
-                            <Label text="{i18n>lbl.Rifatturazione}"/>
-                        </FlexBox>
-                        <FlexBox alignItems="Center" justifyContent="Center">
-                            <OverflowToolbar>
-                                <Button id="CreaReso" text="Crea Reso" press="onCreaReso">
-                                    <layoutData>
-                                        <OverflowToolbarLayoutData shrinkable="true"
-                                                    minWidth = "10px"/>
-                                    </layoutData>
-                                </Button>
-                                <ToolbarSpacer width="135px"/>
-                                <Button id="ConsegnaEntrataMerci" text="Consegna e Entrata Merci" press="onConsegnaEntrataMerci">
-                                    <layoutData>
-                                        <OverflowToolbarLayoutData shrinkable="true"
-                                                    minWidth = "10px"/>
-                                    </layoutData>
-                                </Button>
-                                <ToolbarSpacer width="135px"/>
-                                <Button id="CreaOrdineRifatturazione" text="Crea Ordine" press="onCreaOrdineRifatturazione">
-                                    <layoutData>
-                                        <OverflowToolbarLayoutData shrinkable="true"
-                                                    minWidth = "10px"/>
-                                    </layoutData>
-                                </Button>
-                                <ToolbarSpacer width="135px"/>
-                                <Button id="ConsegnaUscitaMerciRifatturazione" text="Consegna e Uscita Merci" press="onConsegnaUscitaMerciRifatturazione">
-                                    <layoutData>
-                                        <OverflowToolbarLayoutData shrinkable="true"
-                                                    minWidth = "10px"/>
-                                    </layoutData>
-                                </Button>
-                            </OverflowToolbar>
-                        </FlexBox>
-                    </VBox>
+                    <ScrollContainer id="dynheader" vertical="true" horizontal="false">
+                        <!--<l:HorizontalLayout class="sapUiContentPadding">
+                            <f:SimpleForm id="simpleForm" editable="true" layout="ResponsiveGridLayout" labelSpanXL="4" labelSpanL="4" labelSpanM="4" labelSpanS="3" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="1" columnsL="1" columnsM="1" singleContainerFullSize="false">
+                                <f:content>-->
+                        <HBox alignContent="End" alignItems="Center">
+                            <Label text="Carica File" labelFor="fileUploader" class="sapUiMediumMarginBegin"/>
+                            <u:FileUploader id="fileUploader" name="myFileUpload" uploadUrl="upload/" fileType="txt" tooltip="Carica File da Locale" uploadComplete="handleUploadComplete" typeMissmatch=".onFailedType" class="sapUiMediumMarginBeginEnd"/>
+                            <Button text="{i18n>lbl.UploadFile}" type="Emphasized" icon="sap-icon://upload" press=".onUploadPress" class="sapUiMediumMarginBeginEnd"/>
+                            <Button text="{i18n>lbl.Ricarica}" type="Emphasized" icon="sap-icon://refresh" press="onRicarica" class="sapUiLargeMarginBeginEnd"/>
+                        </HBox>
+                        <!--</f:content>
+                            </f:SimpleForm>
+                        </l:HorizontalLayout>-->
+                        <ScrollContainer vertical="true" horizontal="false">
+                            <t:Table id="Ordini" rows="{appModel>/rows}" selectionMode="None" visibleRowCountMode="Interactive" ariaLabelledBy="title" alternateRowColors="true" enableCellFilter="true" columnHeaderVisible="true" showNoData="true">
+                                <!--<t:rowSettingsTemplate>
+                                    <t:RowSettings highlight="{StatoOrdine}" />
+                                </t:rowSettingsTemplate>-->
+                                <t:columns>
+                                    <t:Column hAlign="Begin" resizable="true" autoResizable="true" width="3em">
+                                        <t:template>
+                                            <core:Icon src="{ path:'StatoOrdine',  formatter: '.formatter.fmIconChange'}" size="2em" color="{=${StatoOrdine} === 'Error' ? '#FF0000' : ${StatoOrdine} === 'Success' ? '#19A979' : ${StatoOrdine} === 'Information' ? '#367dc4' : ${StatoOrdine} === 'Warning' ? 'orange': ''}"/>
+                                        </t:template>
+                                    </t:Column>
+                                    <t:Column hAlign="Begin" resizable="true" autoResizable="true" filterProperty="Flusso" sortProperty="Flusso" width="10em">
+                                        <Label text="{i18n>lbl.Flusso}"/>
+                                        <t:template>
+                                            <Text text="{Flusso}" wrapping="false"/>
+                                        </t:template>
+                                    </t:Column>
+                                    <t:Column hAlign="Begin" resizable="true" autoResizable="true" filterProperty="NumeroBolla" sortProperty="NumeroBolla" width="10em">
+                                        <Label text="{i18n>lbl.NumeroBolla}"/>
+                                        <t:template>
+                                            <Text text="{NumeroBolla}" wrapping="false"/>
+                                        </t:template>
+                                    </t:Column>
+                                    <t:Column hAlign="Begin" resizable="true" autoResizable="true" filterProperty="RiferimentoOrdineCliente" sortProperty="RiferimentoOrdineCliente" width="10em">
+                                        <Label text="{i18n>lbl.RiferimentoOrdineCliente}"/>
+                                        <t:template>
+                                            <Text text="{RiferimentoOrdineCliente}" wrapping="false"/>
+                                        </t:template>
+                                    </t:Column>
+                                    <t:Column hAlign="Begin" resizable="true" autoResizable="true" filterProperty="DataBolla" sortProperty="DataBolla" width="10em">
+                                        <Label text="{i18n>lbl.DataBolla}"/>
+                                        <t:template>
+                                            <!--<Text  text ="{ path:'DataBolla', type:'sap.ui.model.type.Date', formatOptions: { pattern : 'dd-MM-yyyy' } }" wrapping="false" />-->
+                                            <Text wrapping="false" text ="{ path:'DataBolla',  formatter: '.formatter.fmFormatDate'}"/>
+                                        </t:template>
+                                    </t:Column>
+                                    <t:Column hAlign="Begin" resizable="true" autoResizable="true" filterProperty="Distributore" sortProperty="Distributore" width="10em">
+                                        <Label text="{i18n>lbl.Distributore}"/>
+                                        <t:template>
+                                            <Input value="{Distributore}" editable="{editable}"/>
+                                        </t:template>
+                                    </t:Column>
+                                    <t:Column hAlign="Begin" resizable="true" autoResizable="true" filterProperty="DescrizioneDistributore" sortProperty="DescrizioneDistributore" width="10em">
+                                        <Label text="{i18n>lbl.DescrizioneDistributore}"/>
+                                        <t:template>
+                                            <Text text="{DescrizioneDistributore}" wrapping="false"/>
+                                        </t:template>
+                                    </t:Column>
+                                    <t:Column hAlign="Begin" resizable="true" autoResizable="true" filterProperty="Committente" sortProperty="Committente" width="10em">
+                                        <Label text="{i18n>lbl.Committente}"/>
+                                        <t:template>
+                                            <Input value="{Committente}" editable="{editable}"/>
+                                        </t:template>
+                                    </t:Column>
+                                    <t:Column hAlign="Begin" resizable="true" autoResizable="true" filterProperty="DescrizioneCommittente" sortProperty="DescrizioneCommittente" width="10em">
+                                        <Label text="{i18n>lbl.DescrizioneCommittente}"/>
+                                        <t:template>
+                                            <Text text="{DescrizioneCommittente}" wrapping="false"/>
+                                        </t:template>
+                                    </t:Column>
+                                    <t:Column hAlign="Begin" resizable="true" autoResizable="true" filterProperty="DestinatarioMerci" sortProperty="DestinatarioMerci" width="10em">
+                                        <Label text="{i18n>lbl.DestinatarioMerci}"/>
+                                        <t:template>
+                                            <Input value="{DestinatarioMerci}" editable="{editable}"/>
+                                        </t:template>
+                                    </t:Column>
+                                    <t:Column hAlign="Begin" resizable="true" autoResizable="true" filterProperty="DescrizioneDestinatarioMerci" sortProperty="DescrizioneDestinatarioMerci" width="10em">
+                                        <Label text="{i18n>lbl.DescrizioneDestinatarioMerci}"/>
+                                        <t:template>
+                                            <Text text="{DescrizioneDestinatarioMerci}" wrapping="false"/>
+                                        </t:template>
+                                    </t:Column>
+                                    <t:Column hAlign="Begin" resizable="true" autoResizable="true" filterProperty="DataOrdineCliente" sortProperty="DataOrdineCliente" width="10em">
+                                        <Label text="{i18n>lbl.DataOrdineCliente}"/>
+                                        <t:template>
+                                            <Text text ="{ path:'DataOrdineCliente',  formatter: '.formatter.fmFormatDate'}" wrapping="false"/>
+                                        </t:template>
+                                    </t:Column>
+                                    <t:Column hAlign="Begin" resizable="true" autoResizable="true" filterProperty="DataConsegnaMerce" sortProperty="DataConsegnaMerce" width="10em">
+                                        <Label text="{i18n>lbl.DataConsegnaMerce}"/>
+                                        <t:template>
+                                            <Text  text ="{ path:'DataConsegnaMerce', formatter: '.formatter.fmFormatDate'}" wrapping="false" />
+                                        </t:template>
+                                    </t:Column>
+                                    <t:Column hAlign="Begin" resizable="true" autoResizable="true" filterProperty="PosizioneOrdine" sortProperty="PosizioneOrdine" width="10em">
+                                        <Label text="{i18n>lbl.PosizioneOrdine}"/>
+                                        <t:template>
+                                            <Text text="{PosizioneOrdine}" wrapping="false"/>
+                                        </t:template>
+                                    </t:Column>
+                                    <t:Column hAlign="Begin" resizable="true" autoResizable="true" filterProperty="Materiale" sortProperty="Materiale" width="10em">
+                                        <Label text="{i18n>lbl.Materiale}"/>
+                                        <t:template>
+                                            <Input value="{Materiale}" editable="{editable}"/>
+                                        </t:template>
+                                    </t:Column>
+                                    <t:Column hAlign="Begin" resizable="true" autoResizable="true" filterProperty="DescrizioneMateriale" sortProperty="DescrizioneMateriale" width="10em">
+                                        <Label text="{i18n>lbl.DescrizioneMateriale}"/>
+                                        <t:template>
+                                            <Text text="{DescrizioneMateriale}" wrapping="false"/>
+                                        </t:template>
+                                    </t:Column>
+                                    <t:Column hAlign="Begin" resizable="true" autoResizable="true" filterProperty="Quantita" sortProperty="Quantita" width="10em">
+                                        <Label text="{i18n>lbl.Quantita}"/>
+                                        <t:template>
+                                            <Input value="{Quantita}" editable="true"/>
+                                        </t:template>
+                                    </t:Column>
+                                    <t:Column hAlign="Begin" resizable="true" autoResizable="true" filterProperty="UDM" sortProperty="UDM" width="10em">
+                                        <Label text="{i18n>lbl.UDM}"/>
+                                        <t:template>
+                                            <Input value="{UDM}" editable="true"/>
+                                        </t:template>
+                                    </t:Column>
+                                    <t:Column hAlign="Begin" resizable="true" autoResizable="true" filterProperty="Note" sortProperty="Note" width="10em">
+                                        <Label text="{i18n>lbl.Note}"/>
+                                        <t:template>
+                                            <Text text="{Note}" wrapping="false"/>
+                                        </t:template>
+                                    </t:Column>
+                                    <t:Column hAlign="Begin" resizable="true" autoResizable="true" filterProperty="StatoElaborazione" sortProperty="StatoElaborazione" width="10em">
+                                        <Label text="{i18n>lbl.StatoElaborazione}"/>
+                                        <t:template>
+                                            <Text text="{StatoElaborazione}" wrapping="false"/>
+                                        </t:template>
+                                    </t:Column>
+                                </t:columns>
+                            </t:Table>
+                        </ScrollContainer>
+                        <HBox alignContent="End" alignItems="Center">
+                            <Label text="{i18n>lbl.ContoDeposito}" class="sapUiMediumMarginBeginEnd"/>
+                            <Button id="CreaOrdine" text="Crea Ordine" press="onCreaOrdine" class="sapUiMediumMarginBeginEnd">
+                            </Button>
+                            <Button id="ConsegnaUscitaMerci" text="Consegna e Uscita Merci" press="onConsegnaUscitaMerci" class="sapUiMediumMarginBeginEnd">
+                            </Button>
+                        </HBox>
+                        <HBox alignContent="End" alignItems="Center">
+                            <Label text="{i18n>lbl.Rifatturazione}" class="sapUiMediumMarginBeginEnd"/>
+                            <Button id="CreaReso" text="Crea Reso" press="onCreaReso" class="sapUiMediumMarginBeginEnd">
+                            </Button>
+                            <Button id="ConsegnaEntrataMerci" text="Consegna e Entrata Merci" press="onConsegnaEntrataMerci" class="sapUiMediumMarginBeginEnd">
+                            </Button>
+                            <Button id="CreaOrdineRifatturazione" text="Crea Ordine" press="onCreaOrdineRifatturazione" class="sapUiMediumMarginBeginEnd">
+                            </Button>
+                            <Button id="ConsegnaUscitaMerciRifatturazione" text="Consegna e Uscita Merci" press="onConsegnaUscitaMerciRifatturazione" class="sapUiMediumMarginBeginEnd">
+                            </Button>
+                        </HBox>
+                    </ScrollContainer>
                 </Page>
             </pages>
         </App>
